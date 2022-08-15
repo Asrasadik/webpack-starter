@@ -29,7 +29,7 @@ let [car1, car2, car3] = carIds;
 
 console.log(car1, car2, car3);
 
-//------------Rest Parameters----------------
+//----------------------------
 
 let cars, remainingIds;
 [, ...remainingIds] = carIds;
@@ -42,3 +42,15 @@ let car = { id: 500, style: "convertible" };
 let id, style;
 ({ id, style } = car);
 console.log(id, style);
+
+//--------Spread syntax----------------
+
+function spreadCars(car1, car2, car3, ...rest) {
+  console.log(car1, car2, car3, rest);
+}
+
+let aCars = [20, 30, 50, 1, 2, 3, 4, 5];
+spreadCars(...aCars);
+
+let carCodes = "abc";
+spreadCars(...carCodes);
