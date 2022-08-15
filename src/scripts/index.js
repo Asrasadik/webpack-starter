@@ -54,3 +54,7 @@ spreadCars(...aCars);
 
 let carCodes = "abc";
 spreadCars(...carCodes);
+
+//-------Type Conversion-----------------
+let num = 5;
+let snum = num.toString();
