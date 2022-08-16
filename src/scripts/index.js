@@ -56,5 +56,72 @@ let carCodes = "abc";
 spreadCars(...carCodes);
 
 //-------Type Conversion-----------------
-let num = 5;
-let snum = num.toString();
+// let num = 5;
+// let snum = num.toString();
+
+console.log(Number.parseInt("55A67BC"));
+//-----Loops-----------------------------
+
+let i = 0;
+for (; i < 12; i++) {
+  if (i === 8) {
+    break;
+  }
+}
+console.log(i);
+
+for (let j = 0; j < 5; j++) {
+  if (j === 3) continue;
+  console.log(j);
+}
+
+//------------closure--------------
+let app = (function () {
+  let carId = 123;
+  let getID = function getId() {
+    return carId;
+  };
+  return {
+    get_ID: getID,
+  };
+})();
+console.log(app.get_ID());
+//--------------------------
+
+let fun = function () {
+  let msg = "Hello";
+  return msg;
+};
+console.log(fun);
+
+//---------call and apply---------
+let obj = {
+  carId: 123,
+  getId: function (prefix, sufix) {
+    return prefix + this.carId + sufix;
+  },
+};
+
+let newCar = { carId: 456 };
+console.log(obj.getId.apply(newCar, ["ID: ", ";"]));
+//-----------bind---------------
+let obj2 = {
+  carId: 123,
+  getId: function () {
+    return this.carId;
+  },
+};
+let newCar2 = { carId: 456 };
+let newFn = obj2.getId.bind(newCar2);
+console.log(newFn());
+
+let module = {
+  x: 42,
+  getX: function (pre) {
+    return pre + this.x;
+  },
+};
+
+let newX = { x: 78 };
+let boundGetX = module.getX.bind(newX, "ID:");
+console.log(boundGetX()); // console.log(boundGetX("ID:"));
